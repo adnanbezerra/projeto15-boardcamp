@@ -1,11 +1,10 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv'
-import categoriesRouter from './routers/categoriesRouter';
-import gamesRouter from './routers/gamesRouter';
-import clientsRouter from './routers/clientsRouter';
-import rentsRouter from './routers/rentsRouter';
-
+import categoriesRouter from './routers/categoriesRouter.js';
+import gamesRouter from './routers/gamesRouter.js';
+import clientsRouter from './routers/clientsRouter.js';
+import rentsRouter from './routers/rentsRouter.js';
 
 dotenv.config()
 
