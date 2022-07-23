@@ -13,10 +13,12 @@ export async function getGames(req, res) {
 export async function postGames(req, res) {
     const newGame = req.body;
 
+    const {name, image, stockTotal, categoryId, pricePerDay} = newGame;
+
     await connection.query(`
             INSERT INTO games 
             (name, image, "stockTotal", "categoryId", "pricePerDay") 
-            VALUES ('${newGame.name}', '${newGame.image}', ${newGame.stockTotal}, ${newGame.categoryId}, ${newGame.pricePerDay})
+            VALUES ('${name}', '${image}', ${stockTotal}, ${categoryId}, ${pricePerDay})
             `);
 
     res.sendStatus(201);
@@ -31,7 +33,7 @@ async function getGamesWithQuery(gameNameLike) {
             FROM games 
             JOIN categories 
             ON games."categoryId"=categories.id 
-            WHERE games.name LIKE $1`,
+            WHERE LOWER(games.name) LIKE $1`,
         [`${gameNameLike}%`]);
     return games.rows;
 }
