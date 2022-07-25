@@ -29,7 +29,7 @@ export async function postGames(req, res) {
 async function getGamesWithQuery(gameNameLike) {
     gameNameLike.toLowerCase();
     const games = await connection.query(`
-            SELECT games.*, categories.name AS categoryName 
+            SELECT games.*, categories.name AS "categoryName" 
             FROM games 
             JOIN categories 
             ON games."categoryId"=categories.id 
@@ -39,6 +39,6 @@ async function getGamesWithQuery(gameNameLike) {
 }
 
 async function getGamesWithoutQuery() {
-    const games = await connection.query('SELECT games.*, categories.name AS categoryName FROM games JOIN categories ON games."categoryId"=categories.id');
+    const games = await connection.query('SELECT games.*, categories.name AS "categoryName" FROM games JOIN categories ON games."categoryId"=categories.id');
     return games.rows;
 }
