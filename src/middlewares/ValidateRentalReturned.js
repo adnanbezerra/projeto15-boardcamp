@@ -13,8 +13,6 @@ async function ValidateDeleteReturned(req, res, next) {
         if (rentalToBeDeleted.rows[0].returnDate === null) return res.sendStatus(400);
         else next();
     }
-
-    next();
 }
 
 export default ValidateDeleteReturned;
